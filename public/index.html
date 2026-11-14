@@ -379,5 +379,20 @@
     <!-- JAVASCRIPT -->
     <script src="script.js"></script>
 
+    <!-- Your existing website code -->
+
+<button id="saveBtn">Test Firebase Connection</button>
+
+<script type="module">
+  import { saveSkyblinkData } from "./firebase.js";
+
+  document.getElementById("saveBtn").addEventListener("click", async () => {
+    await saveSkyblinkData();
+  });
+</script>
+
+</body>
+</html>
+
 </body>
 </html>
