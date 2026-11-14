@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d18">
+
+<title>LUNA X | SKYBLINK Lunar Mission</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --silver: #d8e3f0;
+    --cyan: #77e7ff;
+    --gold: #d6b779;
+    --muted: #9baabd;
+    --panel: #111d2d;
+}
+
+body {
+    background: #080d18;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+nav {
+    padding: 22px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #080d18;
+    border-bottom: 1px solid #29394c;
+}
+
+.logo {
+    font-family: 'Orbitron';
+    font-size: 22px;
+    font-weight: 800;
+    color: white;
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--cyan);
+}
+
+.back {
+    color: var(--cyan);
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.hero {
+    min-height: 680px;
+    padding: 100px 8%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 35px;
+    background:
+    linear-gradient(90deg,rgba(8,13,24,.96),rgba(8,13,24,.35)),
+    url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1800&q=85')
+    center/cover;
+}
+
+.tag {
+    font-family: 'Orbitron';
+    color: var(--cyan);
+    font-size: 11px;
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-family: 'Orbitron';
+    font-size: clamp(50px,8vw,90px);
+    line-height: 1.1;
+}
+
+h1 span {
+    color: var(--silver);
+}
+
+.hero-text {
+    max-width: 490px;
+    color: #c2ccda;
+    line-height: 1.9;
+    margin-top: 25px;
+}
+
+.button {
+    display: inline-block;
+    padding: 16px 25px;
+    background: var(--cyan);
+    color: #06111c;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 12px;
+    margin-top: 30px;
+    border-radius: 3px;
+}
+
+.moon-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 350px;
+    position: relative;
+}
+
+.moon {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    position: relative;
+    background:
+    radial-gradient(circle at 30% 25%,#ffffff,#b9c4d0 28%,#737f90 65%,#303a4a);
+    box-shadow:
+    inset -35px -20px 55px #101b2b,
+    0 0 50px rgba(192,220,255,.3);
+    animation: moonFloat 5s ease-in-out infinite alternate;
+}
+
+.crater {
+    position: absolute;
+    background: rgba(66,77,94,.25);
+    border-radius: 50%;
+    box-shadow: inset 4px 4px 8px rgba(0,0,0,.3);
+}
+
+.crater.one {
+    width: 48px;
+    height: 48px;
+    top: 55px;
+    left: 65px;
+}
+
+.crater.two {
+    width: 32px;
+    height: 32px;
+    top: 140px;
+    left: 155px;
+}
+
+.crater.three {
+    width: 23px;
+    height: 23px;
+    top: 80px;
+    left: 190px;
+}
+
+.moon-orbit {
+    position: absolute;
+    width: 360px;
+    height: 360px;
+    border: 1px solid rgba(119,231,255,.45);
+    border-radius: 50%;
+    animation: orbit 15s linear infinite;
+}
+
+.moon-orbit::after {
+    content: "";
+    width: 12px;
+    height: 12px;
+    background: var(--cyan);
+    box-shadow: 0 0 20px var(--cyan);
+    position: absolute;
+    top: 50%;
+    left: -6px;
+    border-radius: 50%;
+}
+
+@keyframes orbit {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes moonFloat {
+    to { transform: translateY(-12px); }
+}
+
+.section {
+    padding: 85px 8%;
+}
+
+.title {
+    font-family: 'Orbitron';
+    font-size: 30px;
+    margin-bottom: 18px;
+}
+
+.title span {
+    color: var(--cyan);
+}
+
+.description {
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 35px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.stat {
+    background: var(--panel);
+    padding: 30px;
+    border: 1px solid #34485d;
+    border-radius: 8px;
+    transition: .3s;
+}
+
+.stat:hover {
+    border-color: var(--cyan);
+    transform: translateY(-5px);
+}
+
+.stat h3 {
+    font-family: 'Orbitron';
+    font-size: 24px;
+    color: var(--cyan);
+}
+
+.stat p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 12px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.card {
+    background: var(--panel);
+    border: 1px solid #293d53;
+    padding: 30px;
+    border-radius: 8px;
+    transition: .3s;
+}
+
+.card:hover {
+    border-color: var(--cyan);
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    color: var(--cyan);
+    font-family: 'Orbitron';
+    font-size: 15px;
+    margin-bottom: 17px;
+}
+
+.card p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.timeline {
+    border-left: 2px solid var(--cyan);
+    padding-left: 30px;
+    margin: 35px 0 0 10px;
+}
+
+.event {
+    margin-bottom: 35px;
+}
+
+.event h3 {
+    font-family: 'Orbitron';
+    color: var(--gold);
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.event p {
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+.research {
+    background: #111d2d;
+    border: 1px solid #34485d;
+    border-radius: 10px;
+    padding: 30px;
+    color: var(--muted);
+    line-height: 1.9;
+}
+
+.research a {
+    color: var(--cyan);
+    text-decoration: none;
+}
+
+footer {
+    border-top: 1px solid #29394c;
+    text-align: center;
+    padding: 35px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 2;
+}
+
+@media(max-width:800px) {
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 75px 7%;
+    }
+
+    .moon {
+        width: 210px;
+        height: 210px;
+    }
+
+    .moon-orbit {
+        width: 280px;
+        height: 280px;
+    }
+
+    .stats, .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 65px 7%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html" class="logo">SKY<span>BLINK</span></a>
+    <a href="index.html#missions" class="back">← BACK TO MISSIONS</a>
+</nav>
+
+<section class="hero">
+
+    <div>
+        <div class="tag">SKYBLINK SPACE PROGRAM / 003</div>
+
+        <h1>LUNA <span>X</span></h1>
+
+        <p class="hero-text">
+            THE MOON IS OUR NEXT FRONTIER.
+
+            Discover the lunar surface, explore the
+            mysterious South Pole and understand
+            the future of human exploration beyond Earth.
+
+            LUNA X is an independent lunar exploration
+            concept inspired by NASA's Artemis research.
+        </p>
+
+        <a href="#overview" class="button">
+            EXPLORE THE MOON →
+        </a>
+    </div>
+
+    <div class="moon-area">
+        <div class="moon-orbit"></div>
+        <div class="moon">
+            <div class="crater one"></div>
+            <div class="crater two"></div>
+            <div class="crater three"></div>
+        </div>
+    </div>
+
+</section>
+
+<section class="section" id="overview">
+
+    <div class="tag">01 / LUNAR MISSION OVERVIEW</div>
+
+    <h2 class="title">MOON <span>INTELLIGENCE</span></h2>
+
+    <p class="description">
+        Learn about lunar exploration through
+        NASA's Artemis program and its scientific goals.
+        LUNA X is a concept project, not an actual spacecraft.
+    </p>
+
+    <div class="stats">
+
+        <div class="stat">
+            <h3>384,400 KM</h3>
+            <p>AVERAGE EARTH-MOON DISTANCE</p>
+        </div>
+
+        <div class="stat">
+            <h3>6.5 DAYS</h3>
+            <p>GATEWAY APPROXIMATE ORBIT PERIOD</p>
+        </div>
+
+        <div class="stat">
+            <h3>SOUTH POLE</h3>
+            <p>NASA LUNAR EXPLORATION REGION</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+    <div class="tag">02 / LUNAR SCIENCE</div>
+
+    <h2 class="title">DISCOVER THE <span>MOON</span></h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>LUNAR SOUTH POLE</h3>
+            <p>
+                The lunar South Pole contains ancient
+                terrain and permanently shadowed regions.
+                Scientists study these areas to understand
+                the Moon's history and possible resources.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>WATER ICE RESEARCH</h3>
+            <p>
+                Scientists investigate whether water ice
+                exists in permanently shadowed lunar
+                regions and how it could support
+                future scientific exploration.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>MOON GEOLOGY</h3>
+            <p>
+                Lunar rocks and craters preserve clues
+                about the formation of the Moon,
+                Earth and the early solar system.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+    <div class="tag">03 / NASA ARTEMIS PROGRAM</div>
+
+    <h2 class="title">RETURNING TO <span>THE MOON</span></h2>
+
+    <p class="description">
+        NASA's Artemis campaign aims to expand
+        human and robotic exploration around and
+        on the lunar surface.
+    </p>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>ARTEMIS</h3>
+            <p>
+                A NASA exploration campaign using
+                human and robotic missions to advance
+                lunar science and prepare for
+                future Mars exploration.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>ORION SPACECRAFT</h3>
+            <p>
+                Orion is designed to carry astronauts
+                on missions beyond low Earth orbit,
+                including journeys to the Moon.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>LUNAR GATEWAY</h3>
+            <p>
+                Gateway is a planned space station
+                around the Moon that will support
+                science and future lunar missions.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+    <div class="tag">04 / GATEWAY SCIENCE</div>
+
+    <h2 class="title">A STATION AROUND <span>THE MOON</span></h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>UNIQUE ORBIT</h3>
+            <p>
+                NASA's Gateway is planned for a
+                Near-Rectilinear Halo Orbit (NRHO)
+                around the Moon.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>SPACE RESEARCH</h3>
+            <p>
+                Gateway will support research in
+                heliophysics, human health, space
+                biology and astrophysics.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>INTERNATIONAL PARTNERS</h3>
+            <p>
+                NASA is working with international
+                partners including ESA, JAXA and CSA
+                on the Gateway program.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+    <div class="tag">05 / MISSION ROADMAP</div>
+
+    <h2 class="title">THE LUNAR <span>JOURNEY</span></h2>
+
+    <div class="timeline">
+
+        <div class="event">
+            <h3>PHASE 01 — EARTH PREPARATION</h3>
+            <p>
+                Study the lunar environment and
+                prepare exploration technologies.
+            </p>
+        </div>
+
+        <div class="event">
+            <h3>PHASE 02 — LUNAR ORBIT</h3>
+            <p>
+                Study lunar orbital operations
+                and Gateway research concepts.
+            </p>
+        </div>
+
+        <div class="event">
+            <h3>PHASE 03 — SURFACE EXPLORATION</h3>
+            <p>
+                Investigate lunar geology,
+                surface conditions and scientific targets.
+            </p>
+        </div>
+
+        <div class="event">
+            <h3>PHASE 04 — FUTURE DISCOVERIES</h3>
+            <p>
+                Expand lunar science and develop
+                knowledge for future deep-space missions.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+    <div class="tag">06 / NASA RESEARCH CENTER</div>
+
+    <h2 class="title">EXPLORE <span>NASA</span></h2>
+
+    <div class="research">
+
+        LUNA X is an independent SKYBLINK concept.
+        It is not an official NASA mission.
+
+        The following links provide real NASA
+        scientific and program information.
+
+        <br><br>
+
+        <a href="https://www.nasa.gov/mission/artemis-iv/"
+           target="_blank" rel="noopener">
+            NASA — Artemis IV Mission →
+        </a>
+
+        <br><br>
+
+        <a href="https://www.nasa.gov/mission/gateway/"
+           target="_blank" rel="noopener">
+            NASA — Lunar Gateway →
+        </a>
+
+        <br><br>
+
+        <a href="https://www.nasa.gov/moonbase-environment-visualization/"
+           target="_blank" rel="noopener">
+            NASA — Lunar South Pole Environment →
+        </a>
+
+        <br><br>
+
+        <a href="https://science.nasa.gov/moon/"
+           target="_blank" rel="noopener">
+            NASA — Moon Science →
+        </a>
+
+    </div>
+
+</section>
+
+<footer>
+    <h2 class="logo">SKY<span>BLINK</span></h2>
+    <p>LUNA X — THE NEXT FRONTIER.</p>
+    <p>© 2026 SKYBLINK. Independent Concept Project.</p>
+</footer>
+
+</body>
+  </html>
+  
