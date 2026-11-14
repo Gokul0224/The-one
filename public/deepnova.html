@@ -1,0 +1,524 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#08051b">
+
+<title>DEEP NOVA | SKYBLINK</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #08051b;
+    color: white;
+    font-family: 'Inter', sans-serif;
+}
+
+:root {
+    --purple: #b18cff;
+    --cyan: #60eaff;
+    --muted: #aaa8c4;
+    --panel: #15112c;
+}
+
+nav {
+    padding: 22px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #30244d;
+    background: #09061c;
+}
+
+.logo {
+    font-family: 'Orbitron';
+    font-weight: 800;
+    font-size: 22px;
+    color: white;
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--purple);
+}
+
+.back {
+    color: var(--cyan);
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.hero {
+    min-height: 680px;
+    padding: 100px 8%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 40px;
+    background:
+    linear-gradient(90deg,rgba(8,5,27,.98),rgba(8,5,27,.35)),
+    url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1800&q=85') center/cover;
+}
+
+.tag {
+    color: var(--cyan);
+    font-family: 'Orbitron';
+    font-size: 11px;
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-family: 'Orbitron';
+    font-size: clamp(45px,7vw,85px);
+    line-height: 1.1;
+}
+
+h1 span {
+    color: var(--purple);
+}
+
+.hero-text {
+    color: #d0cce2;
+    max-width: 500px;
+    line-height: 1.9;
+    margin-top: 25px;
+}
+
+.button {
+    display: inline-block;
+    padding: 15px 25px;
+    margin-top: 30px;
+    background: var(--purple);
+    color: #100923;
+    font-size: 12px;
+    font-weight: 800;
+    text-decoration: none;
+    letter-spacing: 1px;
+    border-radius: 4px;
+}
+
+.cosmos {
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    border-radius: 50%;
+    background:
+    radial-gradient(ellipse at 35% 40%, #f4b7ff, transparent 15%),
+    radial-gradient(ellipse at 60% 60%, #8b4de0, transparent 35%),
+    radial-gradient(circle, #3b1c78, #100827 70%);
+    box-shadow: 0 0 50px #9148e8, 0 0 110px #421b8b;
+    position: relative;
+    animation: pulse 4s ease-in-out infinite alternate;
+}
+
+.cosmos::before {
+    content: "";
+    position: absolute;
+    inset: -35px;
+    border: 1px solid rgba(177,140,255,.6);
+    border-radius: 50%;
+    transform: rotateX(65deg);
+}
+
+@keyframes pulse {
+    from { transform: scale(.96); }
+    to { transform: scale(1.04); }
+}
+
+.section {
+    padding: 85px 8%;
+}
+
+.title {
+    font-family: 'Orbitron';
+    font-size: 30px;
+    margin-bottom: 18px;
+}
+
+.title span {
+    color: var(--purple);
+}
+
+.description {
+    color: var(--muted);
+    line-height: 1.9;
+    margin-bottom: 35px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.stat, .card {
+    background: var(--panel);
+    padding: 30px;
+    border: 1px solid #352957;
+    border-radius: 9px;
+    transition: .3s;
+}
+
+.stat:hover, .card:hover {
+    border-color: var(--purple);
+    transform: translateY(-5px);
+}
+
+.stat h3 {
+    font-family: 'Orbitron';
+    color: var(--cyan);
+    font-size: 24px;
+}
+
+.stat p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 12px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.card h3 {
+    font-family: 'Orbitron';
+    color: var(--purple);
+    font-size: 15px;
+    margin-bottom: 18px;
+}
+
+.card p {
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+.timeline {
+    border-left: 2px solid var(--purple);
+    padding-left: 30px;
+    margin: 35px 0 0 10px;
+}
+
+.event {
+    margin-bottom: 35px;
+}
+
+.event h3 {
+    color: var(--cyan);
+    font-family: 'Orbitron';
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.event p {
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+.nasa-box {
+    background: #15112c;
+    padding: 30px;
+    border: 1px solid #49356e;
+    border-radius: 10px;
+    color: var(--muted);
+    line-height: 1.9;
+}
+
+.nasa-box a {
+    color: var(--cyan);
+    text-decoration: none;
+}
+
+footer {
+    padding: 35px;
+    text-align: center;
+    border-top: 1px solid #30244d;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 2;
+}
+
+@media(max-width:800px) {
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 75px 7%;
+    }
+
+    .cosmos {
+        width: 220px;
+        height: 220px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 65px 7%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html" class="logo">SKY<span>BLINK</span></a>
+    <a href="index.html#missions" class="back">← BACK TO MISSIONS</a>
+</nav>
+
+<section class="hero">
+
+    <div>
+        <div class="tag">SKYBLINK SPACE PROGRAM / 002</div>
+
+        <h1>DEEP <span>NOVA</span></h1>
+
+        <p class="hero-text">
+            BEYOND THE SOLAR SYSTEM.
+
+            Discover distant stars, mysterious galaxies
+            and unexplored cosmic environments.
+
+            DEEP NOVA is a conceptual deep-space
+            exploration project inspired by NASA research
+            and interstellar science.
+        </p>
+
+        <a href="#mission" class="button">
+            ENTER DEEP SPACE →
+        </a>
+    </div>
+
+    <div class="cosmos"></div>
+
+</section>
+
+<section class="section" id="mission">
+
+    <div class="tag">01 / MISSION CONTROL</div>
+
+    <h2 class="title">COSMIC <span>INTELLIGENCE</span></h2>
+
+    <p class="description">
+        Explore the science behind deep space and
+        humanity's journey beyond our solar system.
+        The figures below describe NASA missions,
+        not live DEEP NOVA spacecraft telemetry.
+    </p>
+
+    <div class="stats">
+
+        <div class="stat">
+            <h3>1977</h3>
+            <p>VOYAGER LAUNCH YEAR</p>
+        </div>
+
+        <div class="stat">
+            <h3>2012</h3>
+            <p>VOYAGER 1 ENTERED INTERSTELLAR SPACE</p>
+        </div>
+
+        <div class="stat">
+            <h3>2018</h3>
+            <p>VOYAGER 2 ENTERED INTERSTELLAR SPACE</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+    <div class="tag">02 / COSMIC DISCOVERY</div>
+
+    <h2 class="title">EXPLORE THE <span>UNKNOWN</span></h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>INTERSTELLAR SPACE</h3>
+            <p>
+                Explore the region beyond the heliosphere,
+                where scientists study particles and
+                magnetic fields from outside our Sun's
+                protective bubble.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>EXOPLANETS</h3>
+            <p>
+                Exoplanets are planets beyond our solar
+                system that usually orbit other stars.
+                Scientists study their atmospheres,
+                composition and environments.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>NEBULAE & GALAXIES</h3>
+            <p>
+                Study cosmic clouds of gas and dust,
+                star formation and the enormous structures
+                that make up our universe.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+    <div class="tag">03 / REAL NASA MISSION</div>
+
+    <h2 class="title">VOYAGER <span>DISCOVERY</span></h2>
+
+    <p class="description">
+        NASA's Voyager spacecraft are among humanity's
+        greatest deep-space exploration achievements.
+    </p>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>VOYAGER 1</h3>
+            <p>
+                Launched on September 5, 1977.
+                It explored Jupiter and Saturn before
+                entering interstellar space in August 2012.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>VOYAGER 2</h3>
+            <p>
+                Launched on August 20, 1977.
+                It visited Jupiter, Saturn, Uranus and
+                Neptune before entering interstellar
+                space in November 2018.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>GOLDEN RECORD</h3>
+            <p>
+                Both Voyager spacecraft carry a golden
+                record containing sounds and images
+                representing life and culture on Earth.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+    <div class="tag">04 / MISSION ROADMAP</div>
+
+    <h2 class="title">JOURNEY THROUGH <span>SPACE</span></h2>
+
+    <div class="timeline">
+
+        <div class="event">
+            <h3>PHASE 01 — COSMIC OBSERVATION</h3>
+            <p>
+                Observe distant stars, galaxies
+                and cosmic environments.
+            </p>
+        </div>
+
+        <div class="event">
+            <h3>PHASE 02 — DATA COLLECTION</h3>
+            <p>
+                Collect scientific observations
+                from distant cosmic objects.
+            </p>
+        </div>
+
+        <div class="event">
+            <h3>PHASE 03 — SCIENTIFIC ANALYSIS</h3>
+            <p>
+                Study cosmic radiation, planetary
+                systems and interstellar environments.
+            </p>
+        </div>
+
+        <div class="event">
+            <h3>PHASE 04 — DISCOVERY</h3>
+            <p>
+                Interpret the observations and
+                expand our understanding of the universe.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+    <div class="tag">05 / NASA RESEARCH CENTER</div>
+
+    <h2 class="title">EXPLORE <span>NASA SCIENCE</span></h2>
+
+    <div class="nasa-box">
+
+        DEEP NOVA is an independent SKYBLINK concept.
+        It is not an official NASA mission.
+
+        Its scientific information is inspired by
+        real NASA research.
+
+        <br><br>
+
+        <a href="https://science.nasa.gov/mission/voyager/"
+           target="_blank" rel="noopener">
+           NASA — Voyager Mission →
+        </a>
+
+        <br><br>
+
+        <a href="https://science.nasa.gov/mission/voyager/interstellar-mission/"
+           target="_blank" rel="noopener">
+           NASA — Interstellar Mission →
+        </a>
+
+        <br><br>
+
+        <a href="https://science.nasa.gov/exoplanets/"
+           target="_blank" rel="noopener">
+           NASA — Exoplanet Exploration →
+        </a>
+
+    </div>
+
+</section>
+
+<footer>
+    <h2 class="logo">SKY<span>BLINK</span></h2>
+    <p>DEEP NOVA — DISCOVER THE UNKNOWN.</p>
+    <p>© 2026 SKYBLINK. Independent Concept Project.</p>
+</footer>
+
+</body>
+  </html>
+  
