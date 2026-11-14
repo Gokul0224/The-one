@@ -12,12 +12,12 @@ import {
 
 // Firebase Console config
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyCMoZI7Au3j5o2HEk1axIykGpQuI_7E7gs",
+  authDomain: "the-one-26b7e.firebaseapp.com",
+  projectId: "the-one-26b7e",
+  storageBucket: "the-one-26b7e.firebasestorage.app",
+  messagingSenderId: "531977002803",
+  appId: "1:531977002803:web:fc4f7f0aacadc470ad2846"
 };
 
 // Connect Firebase
